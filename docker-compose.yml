@@ -1,0 +1,41 @@
+services:
+  db:
+    container_name: schoolms_db
+    image: postgres:15
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=school_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - school_network
+
+  web:
+    image: schoolms:latest
+    container_name: schoolms
+    build: .
+    command: >
+      sh -c "sleep 5 && 
+             python manage.py makemigrations student && 
+             python manage.py migrate && 
+             python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    networks:
+      - school_network
+
+networks:
+  school_network:
+    external: true
+
+volumes:
+  postgres_data:
+
+  

@@ -1,0 +1,44 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Environment variables
+.env
+
+# Django stuff
+db.sqlite3
+/media/
+/staticfiles/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Migrations (optional — depends on team)
+# */migrations/*
+# !*/migrations/__init__.py
+
+# Test / coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Node (if used)
+node_modules/
+
+# Docker (optional)
+*.pid
+*.sock
